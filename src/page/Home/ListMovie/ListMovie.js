@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getListMovie } from "../../../api/api";
-import { CloseCircleFilled, CloseOutlined, PlayCircleOutlined } from "@ant-design/icons";
+import { CloseCircleFilled, PlayCircleOutlined } from "@ant-design/icons";
 import { Pagination } from "antd";
 import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player";

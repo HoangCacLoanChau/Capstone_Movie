@@ -46,3 +46,11 @@ export let getScheduleByMovie = (id) => {
     headers: configHeaders(),
   });
 };
+
+export let getSeatList = () => {
+  return axios({
+    url: `${BASE_URL}/QuanLyDatVe/LayDanhSachPhongVe`,
+    method: "GET",
+    headers: configHeaders(),
+  });
+};
