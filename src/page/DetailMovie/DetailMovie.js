@@ -58,7 +58,7 @@ export default function DetailMovie() {
                 {cumRap.tenCumRap} - {cumRap.diaChi}{" "}
               </div>
 
-              <div className="flex gap-5 pb-5">
+              <div className="flex flex-col md:flex-row  gap-5 pb-5">
                 {cumRap.lichChieuPhim.map((lichChieu) => {
                   return (
                     <button
@@ -70,7 +70,11 @@ export default function DetailMovie() {
                     >
                       <div style={{ color: "#14213d" }} className="px-4 py-2 text-xl">
                         <div className="font-bold text-xl mb-1">{lichChieu.tenRap}</div>
-                        <p>{moment(lichChieu.ngayChieuGioChieu).format("llll")}</p>
+                        <p>
+                          {moment(lichChieu.ngayChieuGioChieu)
+                            .locale("en")
+                            .format("DD/MM/yyyy ~ hh:mm A")}
+                        </p>
                         <Divider className="my-1" style={{ border: "1px solid" }} />
                         <p>Thời Lượng: {lichChieu.thoiLuong} phút</p>
                         <p>Giá Vé: {numeral(lichChieu.giaVe).format("0,0")} VNĐ</p>
@@ -88,14 +92,14 @@ export default function DetailMovie() {
   return (
     <div className="  relative pb-20 " style={{ background: "#14213d" }}>
       <div className="container ">
-        <div className="py-10 flex justify-between gap-10">
-          <div className="flex-1 w-1/3">
-            <div className="relative hover:shadow-2xl h-96 w-325 ">
-              <img class="rounded-t-lg w-full h-full" src={detail.hinhAnh} alt="" />
-              <div className="opacity-0 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full bg-opacity-70  ">
+        <div className="py-10 flex flex-col md:flex-row md:justify-between gap-5">
+          <div className="w-full md:w-1/3 md:h-full">
+            <div className="relative hover:shadow-2xl w-full hover:-translate-y-2 transition-all duration-300">
+              <img class="rounded-t-lg w-full h-full object-cover " src={detail.hinhAnh} alt="" />
+              <div className="opacity-0 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full bg-opacity-70">
                 <button
                   onClick={playVideo}
-                  className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 >
                   <PlayCircleOutlined className="hover:text-red-600 text-6xl text-white" />
                 </button>
@@ -103,20 +107,20 @@ export default function DetailMovie() {
             </div>
           </div>
 
-          <div className="flex-2 w-1/2 text-white space-y-5">
-            <p className="text-5xl font-medium">{detail.tenPhim}</p>
+          <div className="w-full md:w-1/2 text-white space-y-5">
+            <p className="text-3xl md:text-5xl font-medium">{detail.tenPhim}</p>
             <Divider style={{ border: "1px solid", color: "whitesmoke", opacity: "0.5" }}></Divider>
-
-            <p className="text-3xl">
+            <p className="text-lg md:text-3xl">
               <span>Ngày Khởi Chiếu: </span>
               <span>{moment(detail.ngayKhoiChieu).format("LL")}</span>
             </p>
-            <p className="text-xl text-justify">
+            <p className="text-base md:text-xl text-justify">
               <span>Nội Dung: </span>
               <span>{detail.moTa}</span>
             </p>
           </div>
-          <div className="flex-3 w-1/3">
+
+          <div className="w-full md:w-1/3">
             <Progress
               size={200}
               format={(percent) => (
@@ -134,6 +138,7 @@ export default function DetailMovie() {
           <Tabs
             style={{
               maxHeight: 500,
+              overflow: "scroll",
             }}
             tabPosition="left"
             defaultActiveKey="1"

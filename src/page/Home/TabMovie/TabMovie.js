@@ -28,17 +28,22 @@ export default function TabMovie() {
         <div className="flex pb-10 space-x-5 " key={index}>
           <img src={movie.hinhAnh} alt="" className="w-20 h-32 object-cover" />
           <div>
-            <p>{movie.tenPhim}</p>
-            <div className="grid grid-cols-4 gap-5">
+            <p className="text-xl font-bold text-gray-900">{movie.tenPhim}</p>
+
+            <div className="grid grid-cols-4 gap-5 pr-2 pt-2">
               {movie.lstLichChieuTheoPhim.slice(0, 8).map((lichChieu, i) => {
                 return (
                   <button
                     onClick={() => {
                       navigate(`/purchase/${lichChieu.maLichChieu}`);
                     }}
-                    className=" bg-red-500 px-5 text-white rounded shadow py-2"
+                    className=" bg-red-500 text-white rounded shadow py-2 px-3 transition duration-300 ease-in-out transform hover:scale-105 hover:bg-red-600"
                   >
-                    <span key={i}>{moment(lichChieu).format("l")}</span>
+                    <span key={i}>
+                      {moment(lichChieu.ngayChieuGioChieu)
+                        .locale("en")
+                        .format("DD/MM/yyyy ~ hh:mm A")}
+                    </span>
                   </button>
                 );
               })}
@@ -92,7 +97,7 @@ export default function TabMovie() {
   };
   return (
     <Desktop>
-      <div className="container">
+      <div className="container pb-20">
         <Tabs
           style={{
             height: 500,

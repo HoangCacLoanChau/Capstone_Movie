@@ -21,6 +21,7 @@ export let LoginAction = (values) => {
         window.location.href = "/";
       })
       .catch((err) => {
+        message.error("tài khoản hoặc mật khẩu không đúng");
         console.log(err);
       });
   };
