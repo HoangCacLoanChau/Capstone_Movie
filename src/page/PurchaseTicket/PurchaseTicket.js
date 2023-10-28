@@ -4,5 +4,5 @@ import { useParams } from "react-router-dom";
 export default function PurchaseTicket() {
   let param = useParams();
   console.log(param);
-  return <div>PurchaseTicket</div>;
+  return <div>PurchaseTicketaaa</div>;
 }
