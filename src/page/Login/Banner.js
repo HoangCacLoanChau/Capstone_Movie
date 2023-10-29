@@ -1,5 +1,5 @@
 import React from "react";
-import bgAnimate from "../../../public/theaterLogo.json";
+import bgAnimate from "../../theaterLogo.json";
 import Lottie from "lottie-react";
 export default function Banner() {
   return (
