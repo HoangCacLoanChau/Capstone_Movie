@@ -6,6 +6,7 @@ import Login from "./page/Login/Login";
 import DetailMovie from "./page/DetailMovie/DetailMovie";
 import Layout from "./template/Layout";
 import PurchaseTicket from "./page/PurchaseTicket/PurchaseTicket";
+import Register from "./page/Register/Register";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );

@@ -4,8 +4,8 @@ import Banner from "./Banner";
 
 export default function Login() {
   return (
-    <div className="h-screen bg-orange-600 flex items-center">
-      <div className="container flex  bg-white rounded-xl p-10">
+    <div style={{ background: "#fca311" }} className="h-screen flex items-center">
+      <div className="container flex  bg-white rounded-xl items-center">
         <Banner />
         <Form />
       </div>

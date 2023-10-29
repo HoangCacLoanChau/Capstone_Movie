@@ -24,6 +24,7 @@ export default function Header() {
     window.location.reload();
   };
   let handleLogin = () => (window.location.href = "/login");
+  let handleRegister = () => (window.location.href = "/register");
 
   let renderUserNavForDesktop = () => {
     if (info) {
@@ -47,7 +48,7 @@ export default function Header() {
       return (
         <div className="space-x-2">
           <Button onClick={handleLogin}>Đăng nhập</Button>
-          <Button>Đăng kí</Button>
+          <Button onClick={handleRegister}>Đăng kí</Button>
         </div>
       );
     }
@@ -78,7 +79,7 @@ export default function Header() {
       return (
         <div className="space-x-2">
           <Button onClick={handleLogin}>Đăng nhập</Button>
-          <Button>Đăng kí</Button>
+          <Button onClick={handleRegister}>Đăng kí</Button>
         </div>
       );
     }

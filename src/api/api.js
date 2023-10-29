@@ -54,3 +54,12 @@ export let getSeatList = () => {
     headers: configHeaders(),
   });
 };
+
+export let RegisterAPI = (body) => {
+  return axios({
+    url: `${BASE_URL}/QuanLyNguoiDung/DangKy`,
+    method: "POST",
+    data: body,
+    headers: configHeaders(),
+  });
+};
