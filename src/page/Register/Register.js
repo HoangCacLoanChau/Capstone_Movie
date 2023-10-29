@@ -1,6 +1,6 @@
 import React from "react";
 import RegisterForm from "./Form";
-import Banner from "../Login/Banner";
+import Banner from "./Banner";
 
 export default function Register() {
   return (
