@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getDetailMovie, getScheduleByMovie } from "../../api/api";
 import { CloseOutlined, PlayCircleOutlined } from "@ant-design/icons";
 import ReactPlayer from "react-player";
-import { Divider, Popover, Progress, Tabs } from "antd";
+import { Divider, Empty, Popover, Progress, Tabs } from "antd";
 
 import "moment/min/locales";
 import moment from "moment";
@@ -11,7 +11,7 @@ import numeral from "numeral";
 
 export default function DetailMovie() {
   const [detail, setDetail] = useState({});
-  const [schedule, setSchedule] = useState({});
+  const [schedule, setSchedule] = useState([]);
   const [isVideoPlaying, setVideoPlaying] = useState(false);
   moment.locale("vi"); // Set the locale to Vietnamese
   const onChange = (key) => {
@@ -30,7 +30,7 @@ export default function DetailMovie() {
   useEffect(() => {
     getScheduleByMovie(params.id)
       .then((res) => {
-        setSchedule(res.data.content);
+        setSchedule(res.data.content.heThongRapChieu);
         console.log("schedule", res);
       })
       .catch((err) => {
@@ -44,10 +44,10 @@ export default function DetailMovie() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [params.id]);
 
   let handleSchedule = () => {
-    return schedule.heThongRapChieu?.map((heThongRap, index) => {
+    return schedule?.map((heThongRap, index) => {
       return {
         key: index,
         label: <img src={heThongRap.logo} alt="" className="w-16" />,
@@ -92,7 +92,7 @@ export default function DetailMovie() {
   return (
     <div className="  relative pb-20 " style={{ background: "#14213d" }}>
       <div className="container ">
-        <div className="py-10 flex flex-col md:flex-row md:justify-between gap-5">
+        <div className="py-10 flex flex-col md:flex-row md:justify-between gap-10">
           <div className="w-full md:w-1/3 md:h-full">
             <div className="relative hover:shadow-2xl w-full hover:-translate-y-2 transition-all duration-300">
               <img class="rounded-t-lg w-full h-full object-cover " src={detail.hinhAnh} alt="" />
@@ -107,7 +107,7 @@ export default function DetailMovie() {
             </div>
           </div>
 
-          <div className="w-full md:w-1/2 text-white space-y-5">
+          <div className="w-full md:w-full text-white space-y-5">
             <p className="text-3xl md:text-5xl font-medium">{detail.tenPhim}</p>
             <Divider style={{ border: "1px solid", color: "whitesmoke", opacity: "0.5" }}></Divider>
             <p className="text-lg md:text-3xl">
@@ -134,17 +134,22 @@ export default function DetailMovie() {
           </div>
         </div>
         <div>
-          <div className="text-white text-3xl font-bold py-4">Lịch Chiếu Hiện Có</div>{" "}
-          <Tabs
-            style={{
-              maxHeight: 500,
-              overflow: "scroll",
-            }}
-            tabPosition="left"
-            defaultActiveKey="1"
-            items={handleSchedule()}
-            onChange={onChange}
-          />
+          <div className="text-white text-3xl font-bold py-4">Lịch Chiếu Hiện Có</div>
+          {schedule && schedule.length > 0 ? (
+            <Tabs
+              style={{
+                maxHeight: 500,
+              }}
+              tabPosition="left"
+              defaultActiveKey="1"
+              items={handleSchedule()}
+              onChange={onChange}
+            />
+          ) : (
+            <div>
+              <Empty description={<span className="text-xl text-white"> No Data</span>}></Empty>
+            </div>
+          )}
         </div>
       </div>
       {isVideoPlaying && (

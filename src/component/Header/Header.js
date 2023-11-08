@@ -94,20 +94,26 @@ export default function Header() {
   let menu = (mode) => {
     let itemClass = "font-medium";
     return (
-      <Menu mode={mode} className="">
+      <Menu mode={mode} className="w-1/3">
         <Menu.Item className={itemClass} key="1">
-          <Link to="Footer" smooth={true} duration={2000}>
+          <Link to="list_movie" smooth={true} duration={2000}>
             Lịch Chiếu
           </Link>
         </Menu.Item>
         <Menu.Item className={itemClass} key="2">
-          Tin Tức
+          <Link to="list_movie" smooth={true} duration={2000}>
+            Tin Tức
+          </Link>
         </Menu.Item>
         <Menu.Item className={itemClass} key="3">
-          Cụm Rạp
+          <Link to="cum_rap" smooth={true} duration={2000}>
+            Cụm Rạp
+          </Link>
         </Menu.Item>
         <Menu.Item className={itemClass} key="4">
-          Ứng Dụng
+          <Link to="list_movie" smooth={true} duration={2000}>
+            Ứng Dụng
+          </Link>
         </Menu.Item>
       </Menu>
     );

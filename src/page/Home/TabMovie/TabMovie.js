@@ -25,7 +25,7 @@ export default function TabMovie() {
   let renderDsPhim = (movieList) => {
     return movieList.map((movie, index) => {
       return (
-        <div className="flex pb-10 space-x-5 " key={index}>
+        <div className="flex py-10 space-x-5 " key={index}>
           <img src={movie.hinhAnh} alt="" className="w-20 h-32 object-cover" />
           <div>
             <p className="text-xl font-bold text-gray-900">{movie.tenPhim}</p>
@@ -97,7 +97,10 @@ export default function TabMovie() {
   };
   return (
     <Desktop>
-      <div className="container pb-20">
+      <div id="cum_rap" className="container py-20">
+        <h1 className="text-4xl font-extrabold text-gray-800 leading-tight text-center pb-10">
+          DANH SÁCH RẠP VÀ LỊCH CHIẾU
+        </h1>
         <Tabs
           style={{
             height: 500,

@@ -42,7 +42,10 @@ export default function ListMovie() {
   }, []);
 
   return (
-    <div className="relative ">
+    <div id="list_movie" className="relative pt-20">
+      <h1 className="text-4xl font-extrabold text-gray-800 leading-tight text-center pb-10">
+        DANH SÁCH PHIM
+      </h1>
       <div className="container ">
         {isVideoPlaying && (
           <div className="h-full w-screen bg-black bg-opacity-40 fixed  top-0 left-0 z-40">
